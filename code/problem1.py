@@ -28,6 +28,7 @@ for (s, i) in zip([0.5, 1, 2], range(3)):
     axs[i].plot(θ, cf, label="cf")
     axs[i].plot(θ, cs, label="cs")
     axs[i].plot(θ, bn, label="bn")
+    axs[i].set_title("s =" + str(s))
 # plt.show()
 axs[2].legend()
 plt.savefig('../figures/problem1.pdf', bbox_inches='tight')
