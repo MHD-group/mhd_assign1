@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim:fenc=utf-8
 #
-# Copyright © 2023 junyi <junyi@ArchSurface>
+# Copyright © 2023 junyi <jyxu@mail.ustc.edu.cn>
 #
 # Distributed under terms of the MIT license.
 """
@@ -25,9 +25,9 @@ for (s, i) in zip([0.5, 1, 2], range(3)):
     bn = np.abs(cos(θ))
     cf = sqrt(0.5 * (s**2 + 1 + s_Δ))
     cs = sqrt(0.5 * (s**2 + 1 - s_Δ))
-    axs[i].plot(θ, cf, label="cf")
-    axs[i].plot(θ, cs, label="cs")
-    axs[i].plot(θ, bn, label="bn")
+    axs[i].plot(θ, cf, label="cf/b")
+    axs[i].plot(θ, cs, label="cs/b")
+    axs[i].plot(θ, bn, label="bn/b")
     axs[i].set_title("s =" + str(s))
 # plt.show()
 axs[2].legend()
