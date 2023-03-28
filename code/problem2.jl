@@ -5,21 +5,24 @@
     Distributed under terms of the MIT license.
 =#
 
-using Roots
 using PyCall
 using LaTeXStrings
 
 @pyimport matplotlib.pyplot as plt
 
-iszero(small) = small + one(small) ≈ one(small)
+
+# %%
+
 λ = 2
-θ=π/4
+x = 0.1:0.01:6
+x=x'
+y = 0.1:0.01:3
+z = @. -(((y^2 - λ^2)*(-x^2*(-1 + y) + y*(-y + y^2 - λ^2))*(-x^2*(1 + y) + y*(y + y^2 - λ^2)))/(y^2*(-x^2 + y^2 - λ^2)*(y^4 + λ^4 + x^2*(1 - y^2 + λ^2) - y^2*(1 + 2*λ^2))))
 
-for x=0.1:0.2:3
-	f(y) = tan(θ) + (1 - λ^2/y^2)*( (x/y)^2 - 1 + (λ/y)^2/(1+1/y) )*( (x/y)^2 -1 + (λ/y)^2/(1-1/y) ) / ( ((1 - 1/(1-1/y^2))*(x/y)^2 - (1 - (λ/y)^2/(1+1/y))*(1 - (λ/y)^2/(1-1/y) ))*( (x/y)^2 - (1-(λ/y)^2) ) )
-	y = find_zeros(f, 0.1, 2.9)
-	y = @. y[iszero(f(y))]
-	plt.plot(repeat([x], length(y)),y, "ro")
-end
+@. z[z <= 0] = NaN
+Z=@. atan(sqrt(z))
 
+# plt.pcolormesh(x,y,Z)
+plt.contour(x,y,Z)
+plt.colorbar()
 plt.show()
