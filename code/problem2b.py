@@ -3,7 +3,7 @@
 # vim:fenc=utf-8
 #
 # Created On  : 2023-03-28 23:50
-# Last Modified : 2023-03-29 00:54
+# Last Modified : 2023-03-29 01:06
 # Copyright © 2023 myron <yh131996@mail.ustc.edu.cn>
 #
 # Distributed under terms of the MIT license.
@@ -35,7 +35,7 @@ for (λ, i) in zip([0.5, 2], range(2)):
     axs[i].set_xlabel("$kc/\omega_c$")
     axs[i].set_ylabel("$\omega/\omega_c$")
     axs[i].set_title("$\omega_p/\omega_c = "+str(λ)+"$")
-    fig.colorbar(axi, ax = axs[i], label="$\\theta(0^o-90^o)$")
+    fig.colorbar(axi, ax = axs[i], label="$\\theta(0°-90°)$")
 
 plt.show()
 plt.savefig('../figures/problem2b.pdf', bbox_inches='tight')

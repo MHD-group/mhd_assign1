@@ -3,7 +3,7 @@
 # vim:fenc=utf-8
 #
 # Created On  : 2023-03-23 06:27
-# Last Modified : 2023-03-24 00:11
+# Last Modified : 2023-03-29 01:56
 # Copyright © 2023 myron <yh131996@mail.ustc.edu.cn>
 #
 # Distributed under terms of the MIT license.
@@ -39,7 +39,7 @@ for (θ, i) in zip([π/24, π/12, π/6], range(3)):
     print(hf1, hf2)
 
     # plot the left part of hf
-    hf = arange(0, hf1, 0.0001)
+    hf = arange(0, hf1, 0.00001)
 
     B = (γ/2) * hf * sin(θ) - (1-s2)
     C = 2*sin(θ) - (γ - 1) * hf
@@ -60,13 +60,25 @@ for (θ, i) in zip([π/24, π/12, π/6], range(3)):
     Rx = B**2 + C * (hf + 2*s1*sin(θ))
     Xf1 = (B + sqrt(Rx))/C
     Xf2 = (B - sqrt(Rx))/C
-    axs[i].plot(hf, Xf1, label="Xf⁺/hf S<")
-    axs[i].plot(hf, Xf2, label="Xf⁻/hf S<")
+    axs[i].plot(hf, Xf1, label="$Xf⁺/h_f S<$")
+    axs[i].plot(hf, Xf2, label="$Xf⁻/h_f S<$")
 
+    axs[i].set_ylabel("$X^±_f/h_f$  - $log$")
+    axs[i].set_xlabel("$h_f$")
+    y_max = 1000
     axs[i].set_yscale("log", base=10)
     axs[i].set_ylim(0.1,1000)
-    axs[i].set_title("θ = " + str(int(θ*180/π)) + "°")
+#    y_max = 30
+#    axs[i].set_ylim(0.1,30)
+    axs[i].vlines(hf1, ls = ':', linewidth=1, color='r', label='$\^\^h_f$',alpha=0.8, ymin = 0, ymax = y_max)
+    axs[i].vlines(hf2, ls = ':', linewidth=1, label='$\^h_f$',alpha=0.8, ymin = 0, ymax = y_max)
+    axs[i].set_title("$θ = " + str(int(θ*180/π)) + "°$")
+    axs[i].annotate('$\^h_f$', (hf1, 0.1),
+                    fontsize=10,
+                    horizontalalignment='center', verticalalignment='bottom')
+    axs[i].annotate('$\^\^h_f$', (hf2, 0.1),
+                    fontsize=10,
+                    horizontalalignment='left', verticalalignment='bottom')
 
 plt.show()
-axs[2].legend()
-plt.savefig('../figures/problem3.pdf', bbox_inches='tight')
+plt.savefig('../figures/problem3_log.pdf', bbox_inches='tight')
