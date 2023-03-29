@@ -21,9 +21,11 @@
 \title{函数/数据/图形---规范及第1次作业 \footnote{2023 春季《磁流体力学的数值模拟方法》}}
 
 
-\author{郑惠南\footnote{Email: hue@ustc.edu.cn}
+\author{徐均益\footnote{Email: jyxu@mail.ustc.edu.cn}
   \and
-  高新亮\footnote{Email: gaoxl@ustc.edu.cn}
+  余航\footnote{Email: yh131996@mail.ustc.edu.cn}
+  \and
+  陈宇韬\footnote{Email: chenyut@mail.ustc.edu.cn}
 }
 
 \date{%
@@ -44,108 +46,6 @@
 而且训练在实际的计算机应用中独立动手和实践的能力. 本文件将提出作业的具体要求和规范,
 以及一些文件和版面要求, 并给出第一次作业, 请在 \textbf{\due} 前完成并提交.
 \end{abstract}
-
-\section{作业提交规范}
-
-本学期所有的作业以电子文档的形式打包后发送到邮箱\textbf{gaoxl@ustc.edu.cn}.
-所需的硬件设施请同学们自己准备, 本课程提供一些相关软件, 其它一些常用软件可以在校园网或外网找到.
-
-提交的文档中需对所含文件做必要的简单说明, 即列出一份打包清单, 清单 (Packing List) 可以写在一个文件中, 或者放在报告文档里. 具体的要求如下
-
-\begin{enumerate}
-\item
-提交报告的 \href{https://www.latex-project.org/}{\LaTeX} 源文件和 PDF (Portable Document Format) 输出文件. 报告可以使用中文或英文写作. 报告要求由以下部分组成
-\begin{enumerate}
-\item
-作业题目
-\item
-作者信息 -- 作者, 联系方式 (Email 为佳), 及其它相关信息 (如学号, 日期等)
-\item
-  正文 -- 由以下几个部分组成
-\begin{itemize}
-\item
-摘要 / Abstract
-\item
-引言 / Introduction and Objective
-\item
-方法及过程 / Description and Procedure
-\item
-实现, 程序 / Implementation and Method
-\item
-讨论, 进一步工作 / Result, Discussion, Further Work
-\item
-分工说明
-\item
-附加材料, 文献 / Additional Remarks, References
-\end{itemize}
-\end{enumerate}
-\item
-提供计算和绘图程序的源代码 (文本格式文件)
-\item
-提供 PDF 图形文件
-\item
-文件清单说明
-\end{enumerate}
-
-\section{使用的运算, 绘图, 报告排版软件}
-
-要求使用 \href{https://julialang.org/}{julia}, IDL (Interactive Data Language), Matlab, 或其他软件作为编程和图形绘制工具, \LaTeX 则作为必须的报告排版工具.
-
-julia 是一个新的高性能动态高级编程语言. 语法和其他编程语言类似, 易于其他语言用户学习.
-
-\begin{itemize}
-\item
-  \textcolor{red}{免费开源}
-\item
-  核心语言非常小. 标准库用 julia 语言本身写的
-\item
-  调用许多其它成熟的高性能基础代码. 如线性代数, 随机数生成, 快速傅里叶变换, 字符串处理.
-\item
-  丰富的用于建立或描述对象的类型语法
-\item
-  高性能, 接近于静态编译型语言. 包括用户自定义类型等
-\item
-  为并行计算和分布式计算而设计
-\item
-  轻量级 "绿色" 协程
-\item
-  优雅的可扩展的类型转换/提升
-\item
-  支持 Unicode, 包括但不限于 UTF-8
-\item
-  可直接调用 C 函数 (不需要包装或是借助特殊的 API)
-\item
-  有类似 shell 的进程管理能力
-\item
-  有类似 Lisp 的宏以及其它元编程工具
-\end{itemize}
-
-IDL 是理论物理, 天体物理以及空间物理等多个研究领域最常使用的数据处理和计算程序.
-它的特点有 (1) 数组操作, (2) 常用图形显示程序库, (3) 图形环境可选关键字, (4)多种输出格式,
-等等.
-
-课程要求提交的图形文件格式为 PDF 格式, 不再用 PS/EPS (Postscript / Encapulated Postscript) 格式. 因此, 如果程序图形文件的输出形式为 PS/EPS, 请将其转换为 PDF 格式.\footnote{一般的 PDF 阅读器都能打开 PS/EPS 文件. Foxit PDF 编辑器是一个例外, 也可能是没有设置对.} PS 是一种以 ASCII 码方式组成的后缀式描述语言格式. PS/EPS 和 PDF 格式一样, 作为电子文件的一种规范被科学工作者们广泛使用. 使用 PDF 或 PS/EPS 图形格式可以保证线形图 (大部分计算和数据表示的图形方式) 不会失真.
-这里给出一个简单的 IDL 实例程序来说明, 见附件图形文件和图~\ref{Fig:1},
-图 \ref{Fig:1} 描述了电磁波在等离子体中的传播特性\citep{Diver2001},
-\begin{figure}
-\begin{center}
-\includegraphics[width=.8\textwidth]{plot1.pdf}
-\caption{等离子体中电磁波的色散关系, 如实线所示, 点线表示真空中电磁波的色散关系, 虚线为 $\omega = \omega_p$ 为等离子体中电磁波的截止频率. \label{Fig:1}}
-\end{center}
-\end{figure}
-\begin{align}
-\omega^2 =& \omega_p^2 + k^2 c^2
-\end{align}
-其中 $\omega_p$ 是等离子体频率, $c$ 是光速. 图~\ref{Fig:1} 中的实线表示了上式的色散关系. 可以看到, 等离子体中的电磁波的截止频率为等离子体频率 $\omega_p$,
-在高频部分波的行为和真空中的电磁波一样. IDL 详细的语法可以查阅其使用说明和联机帮助. 在源程序文件中,
-我们将对显现图形的程序段中主要的语句进行详细的解释. 程序中有一些简单的注释供大家参考.
-
-另外的实现方式是用 FORTRAN, C/C++ 或其他程序设计语言来完成函数的计算并将所得到的数据存放在一个文件中,
-然后是用 julia 等相关绘图软件读入数据而生成图形. 鉴于本课程作业的计算量不大, 建议都用 julia, 或其他集成运算和绘图功能的软件进行计算编程.
-
-考虑到版本兼容性和运行环境问题, 要求将 \LaTeX 原文件及其生成的 PDF 文件同时提交, 以便用 PDF 阅读器直接检查最终结果, 并可以参考原文件做进一步的检查和处理.
-
-本报告使用 \LaTeX 进行排版，源文件附于本报告的附件清单中.
 
 \section{第一次作业内容}
 
@@ -172,7 +72,7 @@ $b_n$ 和 $\theta$ 的关系用图形表示 (极坐标形式)，比较和分析�
 结果要求能将所有的物理特性或者典型情况涵盖. 可以参考图~\ref{Friedrich} 或文献 \citet{Jeffrey1964} 中已有的图形.
 \begin{figure}
 \begin{center}
-\includegraphics[width=.9\textwidth]{Friedrich.pdf}
+\includegraphics[width=.9\textwidth]{figures/problem1.pdf}
 \caption{Illustration of the surface of normal speeds for (a) $s = 0.5$, (b) $s=1$, and
 (c) $s=2$.}\label{Friedrich}
  \end{center}

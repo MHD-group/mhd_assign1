@@ -26,3 +26,5 @@ Z=@. atan(sqrt(z))
 plt.contour(x,y,Z)
 plt.colorbar()
 plt.show()
+
+norm(-1e-13) <= atol
