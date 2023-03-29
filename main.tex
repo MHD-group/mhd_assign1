@@ -67,10 +67,6 @@ b_n &= b \left|\cos\theta\right|.
 其中, $a$ 是声速, $a^2 = \frac{\partial p}{\partial \rho}$, $p$ 和 $\rho$ 是流体的压力和密度;
 $b$ 是 Alfven 波速, $b^2 = \frac{\mu H^2}{4 \pi \rho}$. $\boldsymbol{H}$ 是磁场, $\mu$ 是磁导率;
 $\theta$ 为传播方向和磁场所成夹角.
-
-熟悉所使用的作业工具和相应软件, 将以上公式中 $c_f$, $c_s$,
-$b_n$ 和 $\theta$ 的关系用图形表示 (极坐标形式)，比较和分析图形曲线中所含的物理概念和参数的特性.
-结果要求能将所有的物理特性或者典型情况涵盖. 可以参考图~\ref{Friedrich} 或文献 \citet{Jeffrey1964} 中已有的图形.
 \begin{figure}
 \begin{center}
 \includegraphics[width=.9\textwidth]{figures/problem1.pdf}
@@ -151,8 +147,6 @@ s_0 < 1 - \gamma \frac{\sin^2\theta_0}{(\gamma-1)}.
 \\
 & \quad + 2\cos\theta_0 \sqrt{(\gamma-1)(1-s_0)^2 + s_0 \gamma^2 \sin^2\theta_0}\Big\}.
 \end{align}
-将关系~(\ref{Eqn:fShock}) 用图形表示 (可取 $\theta_0$ 的某个典型值进行分析, 如 $\theta_0=15^\circ$),
-并参考图~\ref{FShock} 或文献 \citep[第 229 页中的图形]{Jeffrey1964}, 以进行比较.
 \begin{figure}
 \begin{center}
 \includegraphics[width=\textwidth]{figures/problem3_norm.pdf}
@@ -160,33 +154,18 @@ s_0 < 1 - \gamma \frac{\sin^2\theta_0}{(\gamma-1)}.
 \end{center}
 \end{figure}
 
-\subsection{其他函数}
+编程思路大致思路为，通过公式计算得到$\hat{\hat{h}}_f$和$\hat{h}_f$之后，
+分别在$(0, \hat{h}_f), (0, \hat{\hat{h}}_f)$之间画出各个符合要求的函数线。
+可以看到渐近线$\hat{h}_f$与$\hat{\hat{h}}_f$处的连续接触点均符合预期。我们选取了三个角度，
+分别是$\theta = 7.5°$，$\theta = 15° $，$\theta = 30°$三个角度，
+可以看到不同的角度对应发生的不同的变化。
 
-同学们也可以选其他自己感兴趣或 (专业) 相关的函数进行编程和作图. 说明函数的来源, 可能包含的物理性质, 及其中的一些结果和讨论.
-
-\section{交叉参考}
-交叉参考和文献引用也可以参考 \LaTeX 相关文档, 关于公式, 图/表的引用, 直接参考本文文档. 关于文献, 这里有两种做法, 一是用 BibTeX, 文献管理单独用一个文件,
-可以注意到, 文献数据库附件文件里的文献还包含了这个作业里面没有引用的文献. \LaTeX 通过 BibTeX 编译时会自动过滤掉, 只将引用的文献列进来. 例如
-\begin{quote}
-\begin{verbatim}
-\bibliographystyle{unsrt}
-\bibliography{References}
-\end{verbatim}
-\end{quote}
-这里文献文件是 ``References.bib'', 采用 ``unsrt'' 格式引用和排版. 本报告采用这个办法. 另一种是直接用
-\begin{quote}
-\begin{verbatim}
-\begin{bibliography}
-...
-\end{bibliography}
-\end{verbatim}
-\end{quote}
-请大家看这个报告源文件中见被注释掉的部分. 本文件的这一部分实际上是通过 BibTeX 生成的 *.bbl (此处为 Assign1.bbl) 后粘贴过来的, 这也是一般期刊最后稿件的要求,
-因为提交的文件不需要你们自己的整个文献数据库.
+\section{参考文献}
+本作业主要参考助教所提供的教材内容。
 
 \section{分工说明}
 
-郑惠南提供了最初的报告文本, 程序和图形文件. 高新亮对整个文档, 文件清单进行了检查, 确认.
+余航主要负责了作业三的程序和作图部分。
 
 \section{附件}
 
