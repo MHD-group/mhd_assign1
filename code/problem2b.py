@@ -19,6 +19,7 @@ x = np.arange(0.1, 6, step)
 y = np.arange(0.1, 3, step)
 
 X, Y = np.meshgrid(x, y)
+cmap = "gist_rainbow"
 
 for (λ, i) in zip([0.5, 2], range(2)):
     Z = -(((Y**2 - λ**2)*(-X**2*(-1 + Y) + Y*(-Y + Y**2 - λ**2))*\
@@ -28,8 +29,8 @@ for (λ, i) in zip([0.5, 2], range(2)):
 
     Z = arctan(sqrt(maximum(0, Z)))
     Z = np.where(Z, Z, np.nan)
-    axi = axs[i].contour(X, Y, Z * 180 / π, linewidth=0.01)
-    axi = axs[i].pcolormesh(X, Y, Z * 180 / π, alpha=0.7)
+    axi = axs[i].contour(X, Y, Z * 180 / π, linewidth=0.01, cmap=cmap)
+    axi = axs[i].pcolormesh(X, Y, Z * 180 / π, alpha=0.7, cmap=cmap)
     axs[i].set_xlabel("$kc/\omega_c$")
     axs[i].set_ylabel("$\omega/\omega_c$")
     axs[i].set_title("$\omega_p/\omega_c = " + str(λ) + "$")
