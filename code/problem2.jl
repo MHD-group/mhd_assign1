@@ -26,13 +26,15 @@ z = @. -(((y^2 - λ^2)*(-x^2*(-1 + y) + y*(-y + y^2 - λ^2))*(-x^2*(1 + y) + y*(
 
 @. z[z <= 0] = NaN
 Z=@. atan(sqrt(z))
+Z*=180/π
 
+# %%
 cmap = "gist_rainbow"
 
-plt.pcolormesh(x,y,Z, cmap=cmap)
-plt.contour(x,y,Z,linewidth=0.01, cmap=cmap)
+img=plt.pcolormesh(x,y,Z, cmap=cmap)
+plt.contour(x,y,Z, cmap=cmap)
 plt.xlabel(L"$kc/\omega_c$")
 plt.ylabel(L"$\omega/\omega_c$")                   
 plt.title(L"$\omega_p/\omega_c = " * string(λ) * L"$")
-plt.colorbar(label=L"$\theta(0°-90°)$")
+plt.colorbar(img,label=L"$\theta(0°-90°)$")
 plt.show()
